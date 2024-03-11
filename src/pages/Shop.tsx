@@ -9,7 +9,7 @@ export const Shop: React.FC<Props> = ({}) => {
   return (
     <Container>
       <Cards>
-        {PRODUCTS.map((v, i) => (
+        {PRODUCTS.map((_, i) => (
           <ProductCard
             key={i}
             imagePath="https://jaxx-roadhouse.de/wp-content/uploads/2024/01/01.webp"
