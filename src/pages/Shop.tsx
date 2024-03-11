@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ProductCard } from "../components/ProductCard";
+import { CartButton } from "../components/CartButton";
 
 type Props = {};
 
@@ -33,21 +34,4 @@ const Cards = styled.div`
   gap: 30px;
   justify-content: flex-start;
   padding: 45px;
-`;
-
-const CartButton = styled.button`
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  border-radius: 50%;
-  background: black;
-  height: 70px;
-  width: 70px;
-
-  &:hover {
-    color: orange;
-    transform: scale(105%);
-  }
-
-  transition: all 0.3s;
 `;
