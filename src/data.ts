@@ -25,5 +25,92 @@ export const PRODUCTS = [
 
     },
 
+    {
+        name: "DER DUTCH OVEN",
+        description: "Die gelegentlichen Kochabenden mit Freunden und der Familie sind irgendwie immer das Gleiche. Du möchtest etwas Neues ausprobieren und deine Liebsten mal wieder überraschen? Der Dutch Oven aus hochwertigen Gusseisen ist eine tolle Alternative zum Grill oder Smoker und ein wahres Abenteuer. Er kann zum Kochen, Braten, Schmoren, Frittieren, Dünsten und sogar Backen verwendet werden.",
+        price: 64.90,
+        imgUrls: ["https://m.media-amazon.com/images/I/61GMaYnAk+L._AC_SL1006_.jpg"],
+        rating: 4.6,
+        rating_count: 127,
+        options: [
+        ]
+    },
+
+    {
+        name: "DAS KÜCHENMESSER",
+        description: "Das JAXX ROADHOUSE PROFI Küchenmesser ist Dein vielseitiger Begleiter in der Küche. Ganz gleich ob Fleisch, Fisch, Gemüse oder Kräuter. Jeder Schnitt wird eine Freude sein!",
+        price: 50.64,
+        imgUrls: ["https://m.media-amazon.com/images/I/816qz+OXToL._AC_SL1500_.jpg"],
+        rating: 5.0,
+        rating_count: 2,
+        options: [
+        ]
+    },
+
+    {
+        name: "DAS STEAKMESSER",
+        description: "Das JAXX ROADHOUSE PROFI Steakmesser ist Dein vielseitiger Begleiter in der Küche. Ganz gleich ob Fleisch, Fisch, Gemüse oder Kräuter. Jeder Schnitt wird eine Freude sein!",
+        price: 50.64,
+        imgUrls: ["https://m.media-amazon.com/images/I/81PDRrXoPoL._AC_SL1500_.jpg"],
+        rating: 4.3,
+        rating_count: 18,
+        options: [
+        ]
+    },
+
+    {
+        name: "DAS SANTOKUMESSER",
+        description: "Das JAXX ROADHOUSE PROFI Santokumesser ist Dein vielseitiger Begleiter in der Küche. Ganz gleich ob Fleisch, Fisch, Gemüse oder Kräuter. Jeder Schnitt wird eine Freude sein!",
+        price: 50.64,
+        imgUrls: ["https://m.media-amazon.com/images/I/81PDRrXoPoL._AC_SL1500_.jpg"],
+        rating: 5.0,
+        rating_count: 2,
+        options: [
+        ]
+    },
+
+    {
+        name: "DER REINIGER",
+        description: "Entferne lästige, festgebackene Lebensmittelreste im Nu. Mit dem Ringreiniger sehen deine Gusseisenprodukte nach jeder Nutzung aus wie neu.",
+        price: 8.00,
+        imgUrls: ["https://m.media-amazon.com/images/I/71BgkBwpLOL._AC_SL1485_.jpg"],
+        rating: 4.3,
+        rating_count: 55,
+        options: [
+        ]
+    },
+
+    {
+        name: "DIE GRILLPLATTE",
+        description: "Egal ob in deinem Garten auf dem Grill oder in deinem Haus auf dem Herd oder Ofen - die Grill Platte lässt sich unabhängig vom Wetter vielseitig zum Grillen und Braten einsetzen",
+        price: 39.90,
+        imgUrls: ["https://m.media-amazon.com/images/I/81APgf5lvtL._AC_SL1500_.jpg"],
+        rating: 4.3,
+        rating_count: 63,
+        options: [
+        ]
+    },
+
+    {
+        name: "DER TOPFUNTERSETZER",
+        description: "SPEICHERT DIE HITZE der auf dem Gussuntersetzer abgestellten Töpfe und Pfannen und hält ihre Inhalte somit länger warm",
+        price: 10.90,
+        imgUrls: ["https://m.media-amazon.com/images/I/61cHi5d8BzL._AC_SL1485_.jpg"],
+        rating: 4.4,
+        rating_count: 33,
+        options: [
+        ]
+    },
+
+    {
+        name: "DAS SEASONINGÖL",
+        description: "Das Seasoning Öl für Ihre Gusseisenprodukte. Egal ob Pfanne oder Dutch Oven, mit unserem Seasoning Öl pflegen Sie Ihre lieblingsprodukte noch einfacher und sorgen für eine lebenslange Freude am Produkt",
+        price: 10.90,
+        imgUrls: ['/public/Seasoning_Flasche.png'],
+        rating: 5.0,
+        rating_count: 71,
+        options: [
+        ]
+    }
     
 ]
