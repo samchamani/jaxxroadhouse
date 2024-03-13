@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { CartButton } from "../components/CartButton";
-import { PRODUCTS } from "../data";
+import { PRODUCTS, ProductOptionValue } from "../data";
 import { useLocation } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react"; // useContext
+import { useEffect, useMemo, useState, useContext } from "react";
 import { Options } from "../components/Options";
-// import { CartContext } from "../contexts/CartContext";
+import { CartContext, Item } from "../contexts/CartContext";
 
 type Props = {};
 
@@ -29,23 +29,38 @@ export const Product: React.FC<Props> = ({}) => {
 
   const [total, setTotal] = useState(data.price);
 
-  const [optionListCost, setOptionListCost] = useState(() =>
-    new Array(data.options.length).fill(0)
+  const [optionList, setOptionList] = useState<ProductOptionValue[]>(() =>
+    data.options.map((o) => ({
+      name: o.values[0].name,
+      addedCosts: o.values[0].addedCosts,
+    }))
   );
 
-  // const { items, onChange } = useContext(CartContext);
-
+  const { items, onChange } = useContext(CartContext);
 
   const handleAdd = () => {
-
-  }
-
+    const foundIndex = items.findIndex((i) => i.name === data.name);
+    if (foundIndex < 0) {
+      const newItem: Item = {
+        thumbnail: data.imgUrls[0],
+        name: data.name,
+        price: total,
+        quantity: 1,
+        extras: optionList.map((o) => o.name),
+      };
+      onChange([...items, newItem]);
+    } else {
+      const newList = [...items];
+      newList[foundIndex].quantity += 1;
+      onChange(newList);
+    }
+  };
 
   useEffect(() => {
     setTotal(
-      data.price + optionListCost.reduce((prev, curr) => prev + curr, 0)
+      data.price + optionList.reduce((prev, curr) => prev + curr.addedCosts, 0)
     );
-  }, [optionListCost, data.price]);
+  }, [optionList, data.price]);
 
   return (
     <Container>
@@ -75,15 +90,17 @@ export const Product: React.FC<Props> = ({}) => {
             key={i}
             option={o}
             onSelect={(value) =>
-              setOptionListCost((prev) => {
+              setOptionList((prev) => {
                 const nextList = [...prev];
-                nextList[i] = value.addedCosts;
+                nextList[i] = value;
                 return nextList;
               })
             }
           />
         ))}
-        <AddToCart onClick={handleAdd}>{`In den Warenkorb für ${total.toFixed(2)} €`}</AddToCart>
+        <AddToCart onClick={handleAdd}>{`In den Warenkorb für ${total.toFixed(
+          2
+        )} €`}</AddToCart>
       </Description>
       <CartButton />
     </Container>

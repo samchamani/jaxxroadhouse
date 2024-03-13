@@ -6,6 +6,7 @@ import { Product } from "./pages/Product";
 import { NotFound } from "./pages/NotFound";
 import { Contact } from "./pages/Contact";
 import { CartProvider } from "./contexts/CartContext";
+import { Cart } from "./pages/Cart";
 
 export function WebsiteRouter() {
   return (
@@ -16,6 +17,7 @@ export function WebsiteRouter() {
             <Route index element={<Home />} />
             <Route path="shop" element={<Shop />} />
             <Route path="/shop/:product" element={<Product />} />
+            <Route path="shop-cart" element={<Cart />} />
             <Route path="contact" element={<Contact />} />
           </Route>
           <Route path="/*" element={<NotFound />} />

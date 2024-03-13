@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 
 export type Item = {
     name: string;
+    thumbnail: string;
     price: number;
     quantity: number;
     extras: string[];

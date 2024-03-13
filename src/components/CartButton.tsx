@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -8,7 +9,7 @@ export const CartButton: React.FC<Props> = ({}) => {
   const { items } = useContext(CartContext);
 
   return (
-    <Container>
+    <Container to={"/shop-cart"}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="35"
@@ -27,7 +28,7 @@ export const CartButton: React.FC<Props> = ({}) => {
 /*                                   STYLES                                   */
 /* -------------------------------------------------------------------------- */
 
-const Container = styled.button`
+const Container = styled(Link)`
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -36,6 +37,9 @@ const Container = styled.button`
   height: 70px;
   width: 70px;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     color: orange;
