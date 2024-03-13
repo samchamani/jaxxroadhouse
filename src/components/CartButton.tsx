@@ -1,11 +1,11 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import styled from "styled-components";
-import { CartContext } from "../contexts/CartContext";
+// import { CartContext } from "../contexts/CartContext";
 
 type Props = {};
 
 export const CartButton: React.FC<Props> = ({}) => {
-  const { items } = useContext(CartContext);
+  // const { items } = useContext(CartContext);
 
   return (
     <Container>

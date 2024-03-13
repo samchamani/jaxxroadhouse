@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CartButton } from "../components/CartButton";
-import { Product as Data, PRODUCTS } from "../data";
+import { PRODUCTS } from "../data";
 import { useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { Options } from "../components/Options";
