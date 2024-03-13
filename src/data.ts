@@ -24,9 +24,7 @@ export const PRODUCTS: Product[] = [
     description:
       "„Die Bratpfanne“ ist mehr als nur ein Küchenutensil – es ist ein Symbol für handwerkliche Perfektion und ästhetische Eleganz. Hergestellt aus feinstem Gusseisen und veredelt mit einem handgefertigten Holzgriff, repräsentiert sie eine nahtlose Verbindung von Funktionalität und Stil.",
     price: 129.0,
-    imgUrls: [
-      "https://jaxx-roadhouse.de/wp-content/uploads/2024/01/01.webp",
-    ],
+    imgUrls: ["https://jaxx-roadhouse.de/wp-content/uploads/2024/01/01.webp"],
     rating: 4.5,
     rating_count: 123,
     options: [
@@ -79,19 +77,17 @@ export const PRODUCTS: Product[] = [
     description:
       "Der optimale Deckel für DIE BRATPFANNE. DER DECKEL ist sehr hitzebeständig und erlaubt eine vielfältigere Anwendung der Pfanne. DER DECKEL ist in zwei Größen verfügbar.",
     price: 25,
-    imgUrls: [
-      "/Deckel.png",
-    ],
+    imgUrls: ["/Deckel.png"],
     rating: 4.5,
     rating_count: 2,
     options: [
-        {
-            label: "Größe",
-            values: [
-              { name: "26 cm", addedCosts: 0 },
-              { name: "28 cm", addedCosts: 3 },
-            ],
-          },
+      {
+        label: "Größe",
+        values: [
+          { name: "26 cm", addedCosts: 0 },
+          { name: "28 cm", addedCosts: 3 },
+        ],
+      },
     ],
   },
 
@@ -180,7 +176,20 @@ export const PRODUCTS: Product[] = [
     price: 10.9,
     imgUrls: ["/Seasoning_Flasche.png"],
     rating: 5.0,
-    rating_count: 71,
+    rating_count: 6,
+    options: [],
+  },
+
+  {
+    name: "DAS ÖLSET",
+    description:
+      "DAS ÖLSET entfacht ein unvergleichbares Geschmackserlebnis in nahezu allen Gerichten, die du damit kochst. Im Set befinden sich drei Flaschen mit Knoblauchöl, Chilliöl und Trüffelöl.",
+    price: 17,
+    imgUrls: ["/ole-Set.png"],
+    rating: 4.3,
+    rating_count: 8,
     options: [],
   },
 ];
+
+// TODO: categories

@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { CartButton } from "../components/CartButton";
 import { PRODUCTS } from "../data";
 import { useLocation } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react"; // useContext
 import { Options } from "../components/Options";
+// import { CartContext } from "../contexts/CartContext";
 
 type Props = {};
 
@@ -31,6 +32,14 @@ export const Product: React.FC<Props> = ({}) => {
   const [optionListCost, setOptionListCost] = useState(() =>
     new Array(data.options.length).fill(0)
   );
+
+  // const { items, onChange } = useContext(CartContext);
+
+
+  const handleAdd = () => {
+
+  }
+
 
   useEffect(() => {
     setTotal(
@@ -74,7 +83,7 @@ export const Product: React.FC<Props> = ({}) => {
             }
           />
         ))}
-        <AddToCart>{`In den Warenkorb für ${total.toFixed(2)} €`}</AddToCart>
+        <AddToCart onClick={handleAdd}>{`In den Warenkorb für ${total.toFixed(2)} €`}</AddToCart>
       </Description>
       <CartButton />
     </Container>
