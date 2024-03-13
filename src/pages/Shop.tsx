@@ -1,19 +1,21 @@
 import styled from "styled-components";
 import { ProductCard } from "../components/ProductCard";
 import { CartButton } from "../components/CartButton";
+import { PRODUCTS } from "../data";
 
 type Props = {};
 
-const PRODUCTS = new Array(15).fill(0);
+
 
 export const Shop: React.FC<Props> = ({}) => {
   return (
     <Container>
       <Cards>
-        {PRODUCTS.map((_, i) => (
+        {PRODUCTS.map((data, i) => (
           <ProductCard
             key={i}
-            imagePath="https://jaxx-roadhouse.de/wp-content/uploads/2024/01/01.webp"
+            slug={i}
+            product={data}
           />
         ))}
       </Cards>

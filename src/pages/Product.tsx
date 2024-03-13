@@ -1,38 +1,80 @@
 import styled from "styled-components";
 import { CartButton } from "../components/CartButton";
+import { Product as Data, PRODUCTS } from "../data";
+import { useLocation } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Options } from "../components/Options";
 
 type Props = {};
 
-const ABOUT =
-  "„Die Bratpfanne“ ist mehr als nur ein Küchenutensil – es ist ein Symbol für handwerkliche Perfektion und ästhetische Eleganz. Hergestellt aus feinstem Gusseisen und veredelt mit einem handgefertigten Holzgriff, repräsentiert sie eine nahtlose Verbindung von Funktionalität und Stil.";
-
 export const Product: React.FC<Props> = ({}) => {
+  const { pathname } = useLocation();
+
+  const data = useMemo(() => {
+    const urlItems = pathname.split("/");
+    return PRODUCTS[parseInt(urlItems[urlItems.length - 1])];
+  }, [pathname]);
+
+  const [euros, cents] = useMemo(() => {
+    const fulleuros = Math.floor(data.price);
+    const plaincents = `${data.price + 0.001 - fulleuros}`.substring(2, 4);
+    return [`${fulleuros}`, plaincents];
+  }, [data.price]);
+
+  const [index, setIndex] = useState(0);
+
+  const hasLeft = useMemo(() => index > 0, [index]);
+  const hasRight = useMemo(() => index < data.imgUrls.length - 1, [index]);
+
+  const [total, setTotal] = useState(data.price);
+
+  const [optionListCost, setOptionListCost] = useState(() =>
+    new Array(data.options.length).fill(0)
+  );
+
+  useEffect(() => {
+    setTotal(
+      data.price + optionListCost.reduce((prev, curr) => prev + curr, 0)
+    );
+  }, [optionListCost, data.price]);
+
   return (
     <Container>
-      <Image src="https://jaxx-roadhouse.de/wp-content/uploads/2024/01/01.webp"></Image>
+      <Carousel>
+        <Image src={data.imgUrls[index]} />
+        {hasLeft && (
+          <LeftButton onClick={() => setIndex((prev) => prev - 1)}>
+            {"<"}
+          </LeftButton>
+        )}
+        {hasRight && (
+          <RightButton onClick={() => setIndex((prev) => prev + 1)}>
+            {">"}
+          </RightButton>
+        )}
+      </Carousel>
       <Description>
-        <Name>DIE BRATPFANNE</Name>
-        <Rating>4.5/5 (1313 Bewertungen)</Rating>
-        <About>{ABOUT}</About>
+        <Name>{data.name}</Name>
+        <Rating>{`${data.rating}/5 (${data.rating_count} Bewertungen)`}</Rating>
+        <About>{data.description}</About>
         <Price>
-          <Euros>129</Euros>
-          <Cents>00 €</Cents>
+          <Euros>{euros}</Euros>
+          <Cents>{`${cents} €`}</Cents>
         </Price>
-        <Label>
-          Seasoning:
-          <Variation>
-            <option>mit Seasoning</option>
-            <option>ohne Seasoning</option>
-          </Variation>
-        </Label>
-        <Label>
-          Holzgriff:
-          <Variation>
-            <option>Walnussholz</option>
-            <option>Rosenholz</option>
-          </Variation>
-        </Label>
-        <AddToCart>In den Einkaufswagen</AddToCart>
+        {data.options.map((o, i) => (
+          <Options
+            key={i}
+            option={o}
+            onSelect={(value) =>
+              setOptionListCost((prev) => {
+                const nextList = [...prev];
+                nextList[i] = value.addedCosts;
+                return nextList;
+              })
+            }
+          />
+        ))}
+        <AddToCart>{`In den Warenkorb für ${total.toFixed(2)} €`}</AddToCart>
       </Description>
       <CartButton />
     </Container>
@@ -49,7 +91,7 @@ const Container = styled.div`
 
 const Image = styled.img`
   flex: 1;
-  max-width: 50vw;
+  max-width: 40vw;
   object-fit: contain;
 `;
 
@@ -96,26 +138,26 @@ const About = styled.div`
 `;
 
 const AddToCart = styled.button`
-  margin-top: 20px;
-  width: 250px;
+  margin-top: 30px;
+  width: 300px;
   background-color: orange;
   color: black;
 `;
 
-const Label = styled.label`
-  margin-top: 20px;
+const Carousel = styled.div`
+  position: relative;
+  padding: 30px;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-weight: 600;
-  color: grey;
 `;
 
-const Variation = styled.select`
-  /* margin-left: 30px; */
-  border: none;
-  width: 200px;
-  background-color: antiquewhite;
-  padding: 10px;
-  border-radius: 10px;
+const LeftButton = styled.button`
+  position: absolute;
+  top: 45%;
+  left: 20px;
+`;
+
+const RightButton = styled(LeftButton)`
+  left: initial;
+  right: 20px;
 `;

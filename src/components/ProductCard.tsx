@@ -1,19 +1,31 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Product } from "../data";
+import { useMemo } from "react";
 
 type Props = {
-  imagePath?: string;
+  product: Product
+  slug: number;
 };
 
-export const ProductCard: React.FC<Props> = ({ imagePath = "" }) => {
+export const ProductCard: React.FC<Props> = ({ product, slug }) => {
+
+
+  const [euros, cents] = useMemo(() => {
+    const fulleuros = Math.floor(product.price);
+    const plaincents = `${(product.price + 0.001) - fulleuros}`.substring(2, 4);
+    return [`${fulleuros}`, plaincents]
+  }, [product.price])
+
+
   return (
-    <Container to={"/shop/some-product"}>
-      <Image src={imagePath} />
-      <Name>DIE BRATPFANNE</Name>
-      <Rating>4.5/5 (1313 Bewertungen)</Rating>
+    <Container to={`/shop/${slug}`}>
+      <Image src={product.imgUrls[0]} />
+      <Name>{product.name}</Name>
+      <Rating>{`${product.rating}/5 (${product.rating_count} Bewertungen)`}</Rating>
       <Price>
-        <Euros>129</Euros>
-        <Cents>00 €</Cents>
+        <Euros>{euros}</Euros>
+        <Cents>{`${cents} €`}</Cents>
       </Price>
     </Container>
   );
