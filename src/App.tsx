@@ -5,19 +5,22 @@ import { Shop } from "./pages/Shop";
 import { Product } from "./pages/Product";
 import { NotFound } from "./pages/NotFound";
 import { Contact } from "./pages/Contact";
+import { CartProvider } from "./contexts/CartContext";
 
 export function WebsiteRouter() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Base />}>
-          <Route index element={<Home />} />
-          <Route path="shop" element={<Shop />} />
-          <Route path="/shop/:product" element={<Product />} />
-          <Route path="contact" element={<Contact />} />
-        </Route>
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Base />}>
+            <Route index element={<Home />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="/shop/:product" element={<Product />} />
+            <Route path="contact" element={<Contact />} />
+          </Route>
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 }

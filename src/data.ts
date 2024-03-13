@@ -38,10 +38,24 @@ export const PRODUCTS: Product[] = [
         ],
       },
       {
+        label: "Größe",
+        values: [
+          { name: "26 cm", addedCosts: 0 },
+          { name: "28 cm", addedCosts: 10 },
+        ],
+      },
+      {
         label: "Holzgriff",
         values: [
           { name: "Walnussholz", addedCosts: 0 },
           { name: "Rosenholz", addedCosts: 0 },
+        ],
+      },
+      {
+        label: "Deckel",
+        values: [
+          { name: "ohne Deckel", addedCosts: 0 },
+          { name: "mit Deckel", addedCosts: 25 },
         ],
       },
     ],
@@ -58,6 +72,27 @@ export const PRODUCTS: Product[] = [
     rating: 4.6,
     rating_count: 127,
     options: [],
+  },
+
+  {
+    name: "DER DECKEL",
+    description:
+      "Der optimale Deckel für DIE BRATPFANNE. DER DECKEL ist sehr hitzebeständig und erlaubt eine vielfältigere Anwendung der Pfanne. DER DECKEL ist in zwei Größen verfügbar.",
+    price: 25,
+    imgUrls: [
+      "/Deckel.png",
+    ],
+    rating: 4.5,
+    rating_count: 2,
+    options: [
+        {
+            label: "Größe",
+            values: [
+              { name: "26 cm", addedCosts: 0 },
+              { name: "28 cm", addedCosts: 3 },
+            ],
+          },
+    ],
   },
 
   {
