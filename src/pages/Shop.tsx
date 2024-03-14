@@ -2,21 +2,35 @@ import styled from "styled-components";
 import { ProductCard } from "../components/ProductCard";
 import { CartButton } from "../components/CartButton";
 import { PRODUCTS } from "../data";
+import { TabOption, Tabs } from "../components/Tabs";
+import { useMemo, useState } from "react";
 
 type Props = {};
 
-
+const OPTIONS: TabOption[] = [
+  { label: "Alle", value: "" },
+  { label: "Pfannen", value: "pfannen" },
+  { label: "Dutch-Oven", value: "dutchoven" },
+  { label: "Küchenmesser", value: "messer" },
+  { label: "Zubehör", value: "zubehoer" },
+];
 
 export const Shop: React.FC<Props> = ({}) => {
+  const [category, setCategory] = useState("");
+
+  const filteredList = useMemo(() => {
+    if (category === "") return PRODUCTS;
+    return PRODUCTS.filter((data) =>
+      data.categories.some((c) => c === category)
+    );
+  }, [category]);
+
   return (
     <Container>
+      <Tabs option={OPTIONS} onSelect={(val) => setCategory(val.value)} />
       <Cards>
-        {PRODUCTS.map((data, i) => (
-          <ProductCard
-            key={i}
-            slug={i}
-            product={data}
-          />
+        {filteredList.map((data, i) => (
+          <ProductCard key={i} product={data} />
         ))}
       </Cards>
       <CartButton />

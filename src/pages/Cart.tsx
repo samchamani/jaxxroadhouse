@@ -1,14 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
-import { CartContext } from "../contexts/CartContext";
+import { CartContext, Item } from "../contexts/CartContext";
 import { PaypalButton } from "../components/PaypalButton";
 
-
-PaypalButton
+PaypalButton;
 type Props = {};
 
 export const Cart: React.FC<Props> = ({}) => {
   const { items, onChange } = useContext(CartContext);
+
+  // const [hasDiscount, setHasDiscount] = useState(false);
 
   const handleQuantity = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -20,12 +21,32 @@ export const Cart: React.FC<Props> = ({}) => {
     onChange(newList);
   };
 
+  const [promoItems, setPromoItems] = useState<Item[]>([]);
+
+  const handlePromo: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    if (
+      e.target.value === "PIZZAPFANNE" &&
+      items.some((i) => i.name === "DIE BRATPFANNE") &&
+      promoItems.length === 0
+    ) {
+      setPromoItems([
+        {
+          name: "DER DECKEL",
+          price: 0,
+          thumbnail: "/Deckel.png",
+          quantity: 1,
+          extras: [],
+        },
+      ]);
+    }
+  };
+
   return (
     <Container>
       <Title>WARENKORB</Title>
       <Items>
         {items.map((item, index) => (
-          <Item key={index}>
+          <ListItem key={index}>
             <Thumbnail src={item.thumbnail} />
             <Name>{item.name}</Name>
             <Extras>
@@ -39,8 +60,26 @@ export const Cart: React.FC<Props> = ({}) => {
               onChange={(e) => handleQuantity(e, index)}
             ></Quantity>
             <Price>{(item.quantity * item.price).toFixed(2)} €</Price>
-          </Item>
+          </ListItem>
         ))}
+        {promoItems.length > 0 &&
+          promoItems.map((item, index) => (
+            <ListItem key={"promo_" + index}>
+              <Thumbnail src={item.thumbnail} />
+              <Name>{item.name}</Name>
+              <Extras>
+                {item.extras.map((e, i) => (
+                  <Extra key={"extra2_" + i}>{e}</Extra>
+                ))}
+              </Extras>
+              <Quantity
+                type="number"
+                disabled
+                value={item.quantity}
+              ></Quantity>
+              <Price>{(item.quantity * item.price).toFixed(2)} €</Price>
+            </ListItem>
+          ))}
       </Items>
       <Total>
         {items
@@ -48,6 +87,10 @@ export const Cart: React.FC<Props> = ({}) => {
           .toFixed(2)}{" "}
         €
       </Total>
+      <Label>
+        PROMOCODE:
+      <Promocode disabled={promoItems.length > 0} onChange={handlePromo} />
+      </Label>
       <Buttons>
         <PaymentButton>Bezahlen</PaymentButton>
         <PayPal href="https://www.paypal.com/signin">
@@ -77,7 +120,7 @@ const Items = styled.div`
   margin-bottom: 20px;
 `;
 
-const Item = styled.div`
+const ListItem = styled.div`
   padding: 20px 0;
   display: flex;
   gap: 10px;
@@ -129,21 +172,21 @@ const PaymentButton = styled.button`
 `;
 
 const PayPal = styled.a`
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    padding: 5px 15px;
-    border: 1px solid white;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 5px 15px;
+  border: 1px solid white;
 
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    &:hover {
-        border: 1px solid grey;
-    }
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    transition: border-color 0.3s;
+  &:hover {
+    border: 1px solid grey;
+  }
+
+  transition: border-color 0.3s;
 `;
 
 const Title = styled.div`
@@ -154,3 +197,21 @@ const Title = styled.div`
 
   align-self: flex-start;
 `;
+
+const Promocode = styled.input`
+  height: 25px;
+  width: 400px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+`;
+
+const Label = styled.label`
+align-self: flex-start;
+  margin: 20px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 600;
+  color: grey;
+`

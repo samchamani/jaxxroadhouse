@@ -1,6 +1,10 @@
+type Category = "pfannen" | "dutchoven" | "zubehoer" | "messer";
+
 export type Product = {
+  slug: string;
   name: string;
   description: string;
+  categories: Category[];
   price: number;
   imgUrls: string[];
   rating: number;
@@ -20,11 +24,13 @@ export type ProductOptionValue = {
 
 export const PRODUCTS: Product[] = [
   {
+    slug: "die-bratpfanne",
     name: "DIE BRATPFANNE",
+    categories: ["pfannen"],
     description:
-      "„Die Bratpfanne“ ist mehr als nur ein Küchenutensil – es ist ein Symbol für handwerkliche Perfektion und ästhetische Eleganz. Hergestellt aus feinstem Gusseisen und veredelt mit einem handgefertigten Holzgriff, repräsentiert sie eine nahtlose Verbindung von Funktionalität und Stil.",
+      "DIE BRATPFANNE ist mehr als nur ein Küchenutensil – es ist ein Symbol für handwerkliche Perfektion und ästhetische Eleganz. Hergestellt aus feinstem Gusseisen und veredelt mit einem handgefertigten Holzgriff, repräsentiert sie eine nahtlose Verbindung von Funktionalität und Stil. DER REINIGER und DAS SEASOINGÖL werden mitgliefert.",
     price: 129.0,
-    imgUrls: ["https://jaxx-roadhouse.de/wp-content/uploads/2024/01/01.webp"],
+    imgUrls: ["/Pfannenset.png", "https://jaxx-roadhouse.de/wp-content/uploads/2024/01/01.webp"],
     rating: 4.5,
     rating_count: 123,
     options: [
@@ -60,6 +66,8 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "der-dutch-oven",
+    categories: ["dutchoven"],
     name: "DER DUTCH OVEN",
     description:
       "Die gelegentlichen Kochabenden mit Freunden und der Familie sind irgendwie immer das Gleiche. Du möchtest etwas Neues ausprobieren und deine Liebsten mal wieder überraschen? Der Dutch Oven aus hochwertigen Gusseisen ist eine tolle Alternative zum Grill oder Smoker und ein wahres Abenteuer. Er kann zum Kochen, Braten, Schmoren, Frittieren, Dünsten und sogar Backen verwendet werden.",
@@ -73,6 +81,9 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "der-deckel",
+    categories: ["pfannen", "zubehoer" ],
+
     name: "DER DECKEL",
     description:
       "Der optimale Deckel für DIE BRATPFANNE. DER DECKEL ist sehr hitzebeständig und erlaubt eine vielfältigere Anwendung der Pfanne. DER DECKEL ist in zwei Größen verfügbar.",
@@ -92,7 +103,9 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "das-kuechenmesser",
     name: "DAS KÜCHENMESSER",
+    categories: ["messer"],
     description:
       "Das JAXX ROADHOUSE PROFI Küchenmesser ist Dein vielseitiger Begleiter in der Küche. Ganz gleich ob Fleisch, Fisch, Gemüse oder Kräuter. Jeder Schnitt wird eine Freude sein!",
     price: 50.64,
@@ -105,6 +118,8 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "das-steakmesser",
+    categories: ["messer"],
     name: "DAS STEAKMESSER",
     description:
       "Das JAXX ROADHOUSE PROFI Steakmesser ist Dein vielseitiger Begleiter in der Küche. Ganz gleich ob Fleisch, Fisch, Gemüse oder Kräuter. Jeder Schnitt wird eine Freude sein!",
@@ -118,6 +133,8 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "das-santokumesser",
+    categories: ["messer"],
     name: "DAS SANTOKUMESSER",
     description:
       "Das JAXX ROADHOUSE PROFI Santokumesser ist Dein vielseitiger Begleiter in der Küche. Ganz gleich ob Fleisch, Fisch, Gemüse oder Kräuter. Jeder Schnitt wird eine Freude sein!",
@@ -131,6 +148,8 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "der-reiniger",
+    categories: ["zubehoer"],
     name: "DER REINIGER",
     description:
       "Entferne lästige, festgebackene Lebensmittelreste im Nu. Mit dem Ringreiniger sehen deine Gusseisenprodukte nach jeder Nutzung aus wie neu.",
@@ -144,6 +163,8 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "die-grillplatte",
+    categories: ["zubehoer", "pfannen"],
     name: "DIE GRILLPLATTE",
     description:
       "Egal ob in deinem Garten auf dem Grill oder in deinem Haus auf dem Herd oder Ofen - die Grill Platte lässt sich unabhängig vom Wetter vielseitig zum Grillen und Braten einsetzen",
@@ -157,6 +178,8 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "der-topfuntersetzer",
+    categories: ["zubehoer"],
     name: "DER TOPFUNTERSETZER",
     description:
       "SPEICHERT DIE HITZE der auf dem Gussuntersetzer abgestellten Töpfe und Pfannen und hält ihre Inhalte somit länger warm",
@@ -170,6 +193,8 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "das-seasoningoel",
+    categories: ["zubehoer"],
     name: "DAS SEASONINGÖL",
     description:
       "Das Seasoning Öl für Ihre Gusseisenprodukte. Egal ob Pfanne oder Dutch Oven, mit unserem Seasoning Öl pflegen Sie Ihre lieblingsprodukte noch einfacher und sorgen für eine lebenslange Freude am Produkt",
@@ -181,6 +206,8 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    slug: "das-oelset",
+    categories: ["zubehoer"],
     name: "DAS ÖLSET",
     description:
       "DAS ÖLSET entfacht ein unvergleichbares Geschmackserlebnis in nahezu allen Gerichten, die du damit kochst. Im Set befinden sich drei Flaschen mit Knoblauchöl, Chilliöl und Trüffelöl.",
@@ -191,5 +218,3 @@ export const PRODUCTS: Product[] = [
     options: [],
   },
 ];
-
-// TODO: categories

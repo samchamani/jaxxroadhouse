@@ -4,22 +4,18 @@ import { Product } from "../data";
 import { useMemo } from "react";
 
 type Props = {
-  product: Product
-  slug: number;
+  product: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ product, slug }) => {
-
-
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const [euros, cents] = useMemo(() => {
     const fulleuros = Math.floor(product.price);
-    const plaincents = `${(product.price + 0.001) - fulleuros}`.substring(2, 4);
-    return [`${fulleuros}`, plaincents]
-  }, [product.price])
-
+    const plaincents = `${product.price + 0.001 - fulleuros}`.substring(2, 4);
+    return [`${fulleuros}`, plaincents];
+  }, [product.price]);
 
   return (
-    <Container to={`/shop/${slug}`}>
+    <Container to={`/shop/${product.slug}`}>
       <Image src={product.imgUrls[0]} />
       <Name>{product.name}</Name>
       <Rating>{`${product.rating}/5 (${product.rating_count} Bewertungen)`}</Rating>
@@ -36,8 +32,8 @@ export const ProductCard: React.FC<Props> = ({ product, slug }) => {
 /* -------------------------------------------------------------------------- */
 
 const Container = styled(Link)`
-  /* min-width: 300px; */
-  height: 330;
+  height: 330px;
+  max-width: 300px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

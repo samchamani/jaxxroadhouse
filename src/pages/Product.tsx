@@ -13,7 +13,7 @@ export const Product: React.FC<Props> = ({}) => {
 
   const data = useMemo(() => {
     const urlItems = pathname.split("/");
-    return PRODUCTS[parseInt(urlItems[urlItems.length - 1])];
+    return PRODUCTS.find((p) => (p.slug === urlItems[urlItems.length - 1])) || PRODUCTS[0];
   }, [pathname]);
 
   const [euros, cents] = useMemo(() => {
