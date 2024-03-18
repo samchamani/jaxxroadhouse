@@ -218,3 +218,11 @@ export const PRODUCTS: Product[] = [
     options: [],
   },
 ];
+
+
+export const Stories = [
+  `In einer Familie, in der Stahl eine lange Tradition hatte, wurde meine Begeisterung für diesen Werkstoff früh geweckt. Während andere über Fußball oder Mode sprachen, drehten sich unsere Gespräche um die Kunst des Stahl-Schmelzens. So begann meine Reise in die Welt des Stahls. Mit einer Ausbildung zum Industriekaufmann tauchte ich tief in die verschiedenen Verfahren der Stahlherstellung ein. Die jahrelange Arbeit in diesem Bereich ließ meine Bewunderung für diesen Werkstoff als Quelle für die Schaffung wunderschöner Produkte wachsen.`,
+  `Während der Corona-Zeit entwickelte sich der Wunsch, mein eigenes Produkt zu schaffen. So entstand die Vision von JaxxRoadhouse, inspiriert von Freiheit, Abenteuerlust und Familientradition. Bei der Gründung lag mir neben der Qualität auch Umweltbewusstsein am Herzen. Unsere modernen Gießmaschinen ermöglichen ressourcenschonende Produktion.`,
+  `Unsere Bratpfannen füllen eine Lücke im Markt, indem sie Qualität, Stil und Funktionalität vereinen. Sie sind nicht nur praktisch, sondern werden zum Schmuckstück in jeder Küche und sind DIE BRATPFANNE für Jeden!`,
+  `Die Geschichte von JAXX ROADHOUSE ist eine Geschichte von Leidenschaft für Handwerk und Qualität, gepaart mit dem Wunsch, das Beste für unsere Kunden in der Welt des Barbecues und der Küche zu bieten.`
+]

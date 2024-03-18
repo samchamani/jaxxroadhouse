@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import { Story } from "../components/Story";
 
 type Props = {};
 
 export const Home: React.FC<Props> = ({}) => {
-  return <Container></Container>;
+  return <Container>
+    <Story/>
+  </Container>;
 };
 
 /* -------------------------------------------------------------------------- */
